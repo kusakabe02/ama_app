@@ -57,3 +57,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #2021-07-30 ログイン機能追加のため追記
 gem 'sorcery'
+
+#2021-08-02 画像アップロード機能追加のため追記
+gem 'carrierwave'
+gem 'mini_magick'
+
+#2021-08-03 bootstrap導入
+gem 'bootstrap', '~> 4.1.1'

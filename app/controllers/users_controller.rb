@@ -37,19 +37,23 @@ class UsersController < ApplicationController
         # format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
+    #余分なend? エラーが出ていたので削除した
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    #デフォルト？の記述を一旦コメントアウト
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to @user, notice: "User was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @user }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to "/users/#{@user.id}"
   end
 
   # DELETE /users/1 or /users/1.json
@@ -69,6 +73,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :user_name, :password, :password_confirmation, :crypted_password, :salt)
+      params.require(:user).permit(:email, :user_name, :password, :password_confirmation, :crypted_password, :salt, :image)
     end
-# end
+ end
+#end があった

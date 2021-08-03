@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :user_name, presence: true, length: { maximum: 250 }
   # validates :last_name, presence: true, length: { maximum: 250 }
   # validates :first_name, presence: true, length: { maximum: 250 }
+  #アップローダークラスとカラムをUserモデルに紐付け
+  mount_uploader :image, ImageUploader
 end

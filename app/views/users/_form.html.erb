@@ -12,12 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :email %>
+    <%# <%= form.label :email %>
+    <%= form.label "Eメールアドレス" %><br />
     <%= form.text_field :email %>
   </div>
 
   <div class="field">
-    <%= form.label :user_name %>
+    <!-- <%= form.label :user_name %> -->
+    <%= form.label "ユーザー表示名" %><br />
     <%= form.text_field :user_name %>
   </div>
 
@@ -29,20 +31,32 @@
   <div class="field">
     <%= form.label :salt %>
     <%= form.text_field :salt %>
-  </div> -->
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
+  初期の謎のボタン位置を変更 -->
 
   <div class="field">
-   <%= form.label :password %><br />
+   <!-- <%= form.label :password %><br /> -->
+   <%= form.label "パスワードを変更する場合は入力" %><br />
    <%= form.password_field :password %>
  </div>
 
  <div class="field">
-   <%= form.label :password_confirmation %><br />
+   <!-- <%= form.label :password_confirmation %><br /> -->
+   <%= form.label "変更パスワードを再入力" %><br />
    <%= form.password_field :password_confirmation %>
+ </div>
+
+<!--画像アップロード -->
+ <div class="field">
+   <%= form.label :image %>
+   <%= form.file_field :image %>
+   <%= form.hidden_field :user_image_cache %>
+ </div>
+
+<%= image_tag @user.image_url, class:'img-thumbnail', size: '150x150' %>
+
+ <div class="actions">
+   <%= form.submit "更新する" ,class: "btn btn-success" %>
  </div>
 
 <% end %>
