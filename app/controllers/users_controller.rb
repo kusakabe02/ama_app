@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :require_login, only: %i[new create index]
+  skip_before_action :verify_authenticity_token
 
   # GET /users or /users.json
   def index
@@ -56,6 +57,13 @@ class UsersController < ApplicationController
     redirect_to "/users/#{@user.id}"
   end
 
+  #画像リセットのコントローラー実装 初期値がNULLなので、NULLで更新する
+  def image_reset
+    @user = User.find(params[:id])
+    @user.update(image: nil)
+    redirect_to "/users/#{@user.id}/edit"
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
@@ -73,7 +81,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :user_name, :password, :password_confirmation, :crypted_password, :salt, :image)
+      params.require(:user).permit(:email, :user_name, :password, :password_confirmation, :crypted_password, :salt, :image, :anonymous)
     end
  end
 #end があった

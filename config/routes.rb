@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get '/login', to: 'user_sessions#new', as: :login
   post '/login', to: 'user_sessions#create'
   post '/logout', to: 'user_sessions#destroy', as: :logout
+
   #resources :users
   resources :users do
     resource :relationships, only:[:create, :destroy, :update]
+    patch :image_reset, on: :member
   end
 
 end
