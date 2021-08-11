@@ -64,3 +64,6 @@ gem 'mini_magick'
 
 #2021-08-03 bootstrap導入
 gem 'bootstrap', '~> 4.1.1'
+
+# 可変フォームのためcocoon導入
+gem "cocoon"

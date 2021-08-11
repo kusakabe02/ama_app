@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag "asakatus", :media => "all" %>
+<h1>Asakatu#new</h1>
+<p>Find me in app/views/asakatu/new.html.erb</p>
+
+<%= form_with model:@asakatu, local: true do |s| %>
+  <div class="form-group">
+    <%= s.label :title, "タイトル"  %>
+    <%= s.text_field :title, class: 'form-control' %>
+  </div>
+  <%# この間にタスクリストが入る %>
+<div class="task_list">
+  <%= s.fields_for :task do |w| %>
+    <%= render "task_fields", f: w %>
+  <% end %>
+
+  <div class="task_add">
+    <%= link_to_add_association "タスクを追加", s, :task ,class: "btn btn-primary"%>
+  </div>
+
+</div>
+
+  <%= s.label :memo, "メモ" %>
+  <%= s.text_area :memo, class: 'form-control' %>
+
+  <!-- 匿名チェック -->
+  <%= s.label "一般公開しますか？" %>
+  <%= s.check_box :private_flag %>
+<br>
+
+<%= s.submit '投稿する', class: 'btn btn-outline-success' %>
+
+<% end %>

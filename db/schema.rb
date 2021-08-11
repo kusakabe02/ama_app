@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_085908) do
+ActiveRecord::Schema.define(version: 2021_08_11_042635) do
+
+  create_table "asakatus", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "users_id"
+    t.string "title"
+    t.text "memo"
+    t.boolean "private_flag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "asakatu_id"
+    t.string "name"
+    t.boolean "status_flag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", null: false
