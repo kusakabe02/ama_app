@@ -1,0 +1,8 @@
+<h1>Asakatu#index</h1>
+<p>Find me in app/views/asakatu/index.html.erb</p>
+
+<%= link_to "朝活を投稿する", new_asakatu_path, class:'btn btn-primary' %>
+<% @asakatu.each do |asakatu| %>
+  <hr>
+  <p><span>朝活タイトル: </span><%=link_to asakatu.title, asakatu_path(asakatu.id) %></p>
+<% end %>

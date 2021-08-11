@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users_id: 
+  title: MyString
+  memo: MyText
+  private_flag: false
+
+two:
+  users_id: 
+  title: MyString
+  memo: MyText
+  private_flag: false

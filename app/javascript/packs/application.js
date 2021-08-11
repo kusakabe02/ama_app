@@ -12,3 +12,5 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 //=require bootstrap
+require("jquery")
+require("cocoon")

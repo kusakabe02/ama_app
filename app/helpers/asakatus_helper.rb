@@ -1,0 +1,2 @@
+module AsakatusHelper
+end
